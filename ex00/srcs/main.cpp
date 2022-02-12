@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:37:04 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/12 09:36:46 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/12 11:22:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	__test0(void)
 		for (i = 0 ; i < 10 ; ++i)
 			lst.push_back(i);
 	}
-	catch (std::exception &e)
+	catch (std::exception const &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -43,7 +43,7 @@ static void	__test0(void)
 		iter = easyfind(lst, i);
 		std::cout << *iter << ": " << &*iter << std::endl;
 	}
-	catch (std::exception &e)
+	catch (std::exception const &e)
 	{
 		std::cout << i << ": " << e.what() << std::endl;
 	}
@@ -60,7 +60,7 @@ static void	__test1(void)
 		for (i = 0 ; i < 10 ; ++i)
 			vec.push_back(i);
 	}
-	catch (std::exception &e)
+	catch (std::exception const &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -73,7 +73,7 @@ static void	__test1(void)
 		iter = easyfind(vec, i);
 		std::cout << *iter << ": " << &*iter << std::endl;
 	}
-	catch (std::exception &e)
+	catch (std::exception const &e)
 	{
 		std::cout << i << ": " << e.what() << std::endl;
 	}
@@ -90,7 +90,7 @@ static void	__test2(void)
 		for (i = 0 ; i < 10 ; ++i)
 			deq.push_back(i);
 	}
-	catch (std::exception &e)
+	catch (std::exception const &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -103,7 +103,7 @@ static void	__test2(void)
 		iter = easyfind(deq, i);
 		std::cout << *iter << ": " << &*iter << std::endl;
 	}
-	catch (std::exception &e)
+	catch (std::exception const &e)
 	{
 		std::cout << i << ": " << e.what() << std::endl;
 	}
