@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 09:43:53 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/12 11:57:09 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/24 22:34:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,34 @@
 //                                Constructors                                //
 // ************************************************************************** //
 
-Span::Span(void) :
+Span::Span(uint const size) :
 	_size(0),
-	_maxSize(0)
+	_maxSize(size),
+	_lst()
 {
-	std::cout
-	<< "Creating Span"
-	<< " (" << this->_size << ")"
-	<< " (" << this->_maxSize << ")"
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Creating Span"
+		<< " (" << this->_size << ")"
+		<< " (" << this->_maxSize << ")"
+		<< std::endl;
 	std::srand(std::time(NULL));
 }
 
 Span::Span(Span const &src) :
 	_size(src._size),
-	_maxSize(src._maxSize)
+	_maxSize(src._maxSize),
+	_lst(src._lst)
 {
-	std::cout
-	<< "Creating Span"
-	<< " (" << this->_size << ")"
-	<< " (" << this->_maxSize << ")"
-	<< std::endl;
-	*this = src;
+	if (DEBUG)
+		std::cout
+		<< "Creating Span"
+		<< " (" << this->_size << ")"
+		<< " (" << this->_maxSize << ")"
+		<< std::endl;
 	std::srand(std::time(NULL));
 }
 
-Span::Span(unsigned int const size) :
-	_size(0),
-	_maxSize(size)
-{
-	std::cout
-	<< "Creating Span"
-	<< " (" << this->_size << ")"
-	<< " (" << this->_maxSize << ")"
-	<< std::endl;
-	std::srand(std::time(NULL));
-}
 
 // ************************************************************************* //
 //                                Destructors                                //
@@ -62,27 +54,40 @@ Span::Span(unsigned int const size) :
 
 Span::~Span(void)
 {
-	std::cout
-	<< "Destroying Span"
-	<< std::endl;
+	if (DEBUG)
+		std::cout
+		<< "Destroying Span"
+		<< std::endl;
 }
 
 // ************************************************************************* //
 //                                 Accessors                                 //
 // ************************************************************************* //
 
-unsigned int	Span::getSize(void) const
+uint	Span::getSize(void) const
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::getSize()"
+		<< std::endl;
 	return this->_size;
 }
 
-unsigned int	Span::getMaxSize(void) const
+uint	Span::getMaxSize(void) const
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::getMaxSize()"
+		<< std::endl;
 	return this->_maxSize;
 }
 
 std::list<int> const	&Span::getLst(void) const
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::getLst()"
+		<< std::endl;
 	return this->_lst;
 }
 
@@ -90,13 +95,21 @@ std::list<int> const	&Span::getLst(void) const
 //                          Private Member Functions                          //
 // ************************************************************************** //
 
-char const	*Span::alreadyFullException::what() const throw()
+char const	*Span::AlreadyFullException::what() const throw()
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::alreadyFullException::what()"
+		<< std::endl;
 	return "Span is already full";
 }
 
-char const	*Span::noSpanException::what() const throw()
+char const	*Span::NoSpanException::what() const throw()
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::noSpanException::what()"
+		<< std::endl;
 	return "too few integers stored in Span";
 }
 
@@ -106,38 +119,54 @@ char const	*Span::noSpanException::what() const throw()
 
 void	Span::addNumber(int const n)
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::addNumber()"
+		<< std::endl;
 	if (this->_size == this->_maxSize)
-		throw Span::alreadyFullException();
+		throw Span::AlreadyFullException();
 	this->_lst.push_back(n);
 	++this->_size;
 }
 
-void	Span::randomGenerate(unsigned int const size)
+void	Span::randomGenerate(uint const size)
 {
-	unsigned int	i;
+	uint	i;
 
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::randomGenerate()"
+		<< std::endl;
 	for (i = 0 ; i < size ; ++i)
-		this->addNumber(std::rand() % INT_MAX);
+		this->addNumber(std::rand());
 }
 
-unsigned int	Span::longestSpan(void) const
+uint	Span::longestSpan(void) const
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::longestSpan()"
+		<< std::endl;
 	if (this->_size < 2)
-		throw Span::noSpanException();
+		throw Span::NoSpanException();
 	return *std::max_element(this->_lst.begin(), this->_lst.end())
 		- *std::min_element(this->_lst.begin(), this->_lst.end());
 }
 
-unsigned int	Span::shortestSpan(void) const
+uint	Span::shortestSpan(void) const
 {
-	unsigned int					output;
+	uint							output;
 	std::list<int>					tmp(this->_lst);
 	std::list<int>::const_iterator	iter;
 	int								a;
 	int								b;
 
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::shortestSpan()"
+		<< std::endl;
 	if (this->_size < 2)
-		throw Span::noSpanException();
+		throw Span::NoSpanException();
 	output = UINT_MAX;
 	tmp.sort();
 	iter = tmp.begin();
@@ -147,8 +176,8 @@ unsigned int	Span::shortestSpan(void) const
 		if (++iter != tmp.end())
 		{
 			b = *iter;
-			if (static_cast<unsigned int>(b - a) < output)
-				output = static_cast<unsigned int>(b - a);
+			if (static_cast<uint>(b - a) < output)
+				output = static_cast<uint>(b - a);
 		}
 	}
 	return output;
@@ -160,6 +189,10 @@ unsigned int	Span::shortestSpan(void) const
 
 Span	&Span::operator=(Span const &rhs)
 {
+	if (DEBUG)
+		std::cout
+		<< "Calling Span::operator=()"
+		<< std::endl;
 	if (this != &rhs)
 	{
 		this->_size = rhs._size;
@@ -179,7 +212,7 @@ std::ostream	&operator<<(std::ostream &o, Span const &rhs)
 	iter = rhs.getLst().begin();
 	while (iter != rhs.getLst().end())
 	{
-		o << *iter ;
+		o << *iter;
 		if (++iter != rhs.getLst().end())
 			o << ", ";
 	}

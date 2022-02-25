@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:37:04 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/12 11:22:29 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/24 22:00:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <list>
 #include <map>
 #include <vector>
-#include "class/easyfind.tpp"
+#include "easyfind.tpp"
 
 static void	__test0(void)
 {

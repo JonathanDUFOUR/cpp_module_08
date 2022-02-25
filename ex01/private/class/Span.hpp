@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 09:44:24 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/12 11:54:40 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/24 22:33:50 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,50 @@
 # include <iostream>
 # include <list>
 
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
 class Span
 {
 private:
-	unsigned int	_size;
-	unsigned int	_maxSize;
+	uint			_size;
+	uint			_maxSize;
 	std::list<int>	_lst;
 
-	class alreadyFullException : public std::exception
+	class AlreadyFullException : public std::exception
 	{
 	private:
 		// Member functions
 		virtual char const	*what(void) const throw();
 	};
 
-	class noSpanException : public std::exception
+	class NoSpanException : public std::exception
 	{
 	private:
 		// Member functions
 		virtual char const	*what(void) const throw();
 	};
-protected:
 
 public:
 	// Constructors
-	Span(void);
+	Span(uint const size = 0);
 	Span(Span const &src);
-	Span(unsigned int const size);
 
 	// Destructors
 	virtual ~Span(void);
 
 	// Accessors
-	inline unsigned int			getSize(void) const;
-	inline unsigned int			getMaxSize(void) const;
-	inline std::list<int> const	&getLst(void) const;
+	uint					getSize(void) const;
+	uint					getMaxSize(void) const;
+	std::list<int> const	&getLst(void) const;
 
 	// Member functions
-	void			addNumber(int const nb);
-	void			randomGenerate(unsigned int const size);
+	void	addNumber(int const nb);
+	void	randomGenerate(uint const size);
 
-	unsigned int	longestSpan(void) const;
-	unsigned int	shortestSpan(void) const;
+	uint	longestSpan(void) const;
+	uint	shortestSpan(void) const;
 
 	// Operators
 	Span	&operator=(Span const &rhs);

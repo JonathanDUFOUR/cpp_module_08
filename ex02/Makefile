@@ -6,15 +6,15 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/12 12:11:38 by jodufour          #+#    #+#              #
-#    Updated: 2022/02/12 12:25:03 by jodufour         ###   ########.fr        #
+#    Updated: 2022/02/24 22:36:59 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################################
 #              COMMANDS              #
 ######################################
-CXX			=	clang++ -c
-LINK		=	clang++
+CXX			=	c++ -c
+LINK		=	c++
 MKDIR		=	mkdir -p
 RM			=	rm -rf
 
@@ -48,6 +48,7 @@ DEP			=	${OBJ:.o=.d}
 #                FLAGS                #
 #######################################
 CPPFLAGS	=	-Wall -Wextra -Werror
+CPPFLAGS	+=	-Wshadow
 CPPFLAGS	+=	-std=c++98
 CPPFLAGS	+=	-MMD -MP
 CPPFLAGS	+=	-I${PRV_DIR}
@@ -56,6 +57,7 @@ LDFLAGS		=
 
 ifeq (${DEBUG}, 1)
 	CPPFLAGS	+=	-g
+	CPPFLAGS	+=	-DDEBUG=1
 endif
 
 #######################################
