@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 09:44:24 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/24 22:33:50 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:02:31 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ public:
 	virtual ~Span(void);
 
 	// Accessors
-	uint					getSize(void) const;
-	uint					getMaxSize(void) const;
+	uint const				&getSize(void) const;
+	uint const				&getMaxSize(void) const;
 	std::list<int> const	&getLst(void) const;
 
 	// Member functions
