@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 09:43:23 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/28 16:18:50 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/03/02 23:17:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	__test0(void)
 	Span	sp(5);
 	int		i;
 
-	for (i = 0; i < 5; i++)
+	for (i = 0 ; i < 5 ; ++i)
 		try
 		{
 			sp.addNumber(i);
@@ -35,7 +35,7 @@ static void	__test1(void)
 	Span	sp(2);
 	int		i;
 
-	for (i = 0; i < 5; i++)
+	for (i = 0 ; i < 5 ; ++i)
 		try
 		{
 			sp.addNumber(i);
@@ -53,7 +53,7 @@ static void	__test2(void)
 	uint	range;
 	int		i;
 
-	for (i = 0; i < 10; i++)
+	for (i = 0 ; i < 10 ; ++i)
 		try
 		{
 			sp.addNumber(i * 42);
@@ -81,7 +81,6 @@ static void	__test2(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
 }
 
 static void	__test3(void)

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 09:43:53 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/28 16:02:47 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/03/02 21:15:16 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,13 +131,13 @@ void	Span::addNumber(int const n)
 
 void	Span::randomGenerate(uint const size)
 {
-	uint	i;
+	uint	i(0U);
 
 	if (DEBUG)
 		std::cout
 		<< "Calling Span::randomGenerate()"
 		<< std::endl;
-	for (i = 0 ; i < size ; ++i)
+	for ( ; i < size ; ++i)
 		this->addNumber(std::rand());
 }
 
@@ -155,7 +155,7 @@ uint	Span::longestSpan(void) const
 
 uint	Span::shortestSpan(void) const
 {
-	uint							output;
+	uint							output(UINT_MAX);
 	std::list<int>					tmp(this->_lst);
 	std::list<int>::const_iterator	iter;
 	int								a;
@@ -167,7 +167,6 @@ uint	Span::shortestSpan(void) const
 		<< std::endl;
 	if (this->_size < 2)
 		throw Span::NoSpanException();
-	output = UINT_MAX;
 	tmp.sort();
 	iter = tmp.begin();
 	while (iter != tmp.end())

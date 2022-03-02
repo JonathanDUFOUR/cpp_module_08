@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 20:37:04 by jodufour          #+#    #+#             */
-/*   Updated: 2022/02/24 22:00:06 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/03/02 23:12:55 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 static void	__test0(void)
 {
-	std::list<int>				lst;
-	std::list<int>::iterator	iter;
-	int							i;
+	std::list<int>					lst;
+	std::list<int>::const_iterator	iter;
+	int								i;
 
 	try
 	{
@@ -51,9 +51,9 @@ static void	__test0(void)
 
 static void	__test1(void)
 {
-	std::vector<int>			vec;
-	std::vector<int>::iterator	iter;
-	int							i;
+	std::vector<int>					vec;
+	std::vector<int>::const_iterator	iter;
+	int									i;
 
 	try
 	{
@@ -81,9 +81,9 @@ static void	__test1(void)
 
 static void	__test2(void)
 {
-	std::deque<int>				deq;
-	std::deque<int>::iterator	iter;
-	int							i;
+	std::deque<int>					deq;
+	std::deque<int>::const_iterator	iter;
+	int								i;
 
 	try
 	{
